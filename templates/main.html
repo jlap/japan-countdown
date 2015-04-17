@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Is it Japan yet?</title>
+    <style>
+
+    body {
+        text-align: center;
+        font-family: "Arial", "Helvetica", sans-serif;
+    }
+
+    h3 {
+        font-size: 48px;
+    }
+
+    .big {
+        font-size: 72px;
+    }
+
+    .medium {
+        font-size: 36px;
+    }
+
+    .small {
+        font-size: 24px;
+    }
+
+    .bold {
+        font-weight: bold;
+    }
+
+    </style>
+</head>
+<body>
+    <h3>Is it Japan yet?</h3>
+    {% if context.is_japan %}
+        <p class="big bold">YES!</p>
+    {% else %}
+        <p class="big bold">Nope</p>
+        {% if context.days_left > 0 %}
+            <p class="small">But there's only {{ context.days_left }} days left</p>
+        {% endif %}
+    {% endif %}
+
+    {% if context.weather %}
+    <br><br><br>
+        {% if context.weather.tokyo %}
+            <p>
+                <span class="small bold">Tokyo</span>
+                <br>
+                <span class="medium">
+                    {{ context.weather.tokyo.temperature }}°C - {{ context.weather.tokyo.condition }}
+                </span>
+            </p>
+        {% endif %}
+        {% if context.weather.kyoto %}
+            <p>
+                <span class="small bold">Kyoto</span>
+                <br>
+                <span class="medium">
+                    {{ context.weather.kyoto.temperature }}°C - {{ context.weather.kyoto.condition }}
+                </span>
+            </p>
+        {% endif %}
+    {% endif %}
+
+</body>
+</html>
