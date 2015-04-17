@@ -9,7 +9,7 @@ import requests
 import json
 
 with open(os.path.dirname(os.path.realpath(__file__)) + '/config') as f:
-    FORECAST_API_KEY = f.read()
+    FORECAST_API_KEY = f.read().strip()
 
 FORECAST_API_URL = 'https://api.forecast.io/forecast/{api_key}/{lat},{long}?units=si'
 
